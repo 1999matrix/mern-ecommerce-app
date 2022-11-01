@@ -7,6 +7,11 @@ const {
 
 const router = require("express").Router();
 
+// router.post("/userposttest" , (req, res)=>{
+//   const username = req.body.username;
+//   // console.log(username);
+//   res.send("your username is "+username);
+// })
 //UPDATE
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
@@ -14,14 +19,14 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
       req.body.password,
       process.env.PASS_SEC
     ).toString();
-  }
+  } 
 
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
-      },
+      }, 
       { new: true }
     );
     res.status(200).json(updatedUser);

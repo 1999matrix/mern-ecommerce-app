@@ -8,7 +8,9 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80")
+    /* url("C:/Users/HP/Desktop/mern-ecommerce-app/client/src/pages/alyssa-strohmann-TS--uNw-JqE-unsplash.jpg") */
+    /* url(alyssa-strohmann-TS--uNw-JqE-unsplash.jpg) */
       center;
   background-size: cover;
   display: flex;

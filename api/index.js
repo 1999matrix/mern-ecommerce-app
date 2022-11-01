@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config({path: './.env'});
+
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
@@ -10,18 +11,23 @@ const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 const cors = require("cors");
+const router = require("./routes/stripe");
 
 
-// mongoose
-//   .connect(process.env.MONGO_URL)
-//   .then(() => console.log("DB Connection Successfull!"))
-//   .catch((err) => {
-//     console.log(err);
-//   });
-mongoose.connect(process.env.MONGO_URI , {useNewUrlParser : true} , ()=>{
-  console.log("connected to mongodb")
-});
-
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("DB C onnection Successfull!"))
+  .catch((err) => { 
+    console.log(err);
+  });
+// mongoose.connect(process.env.MONG O_URI, {useNewUrlParser : true , useCreateIndex: true , useUnifiedTopology:true, useFindAndMmodify:false} , ()=>{
+//   console.log("connected to mongodB")
+// });
+   
+// app.get("/api/test" , ()=>{
+//   console.log("test is successfull"); 
+ 
+// }) 
 
 app.use(cors());
 app.use(express.json());
@@ -29,7 +35,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
-app.use("/api/orders", orderRoute);
+app.use("/api/orders", orderRoute); 
 app.use("/api/checkout", stripeRoute);
 
 app.listen(process.env.PORT || 5000, () => {
